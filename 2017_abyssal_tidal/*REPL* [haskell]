@@ -1,0 +1,109 @@
+GHCi, version 8.0.2: http://www.haskell.org/ghc/  :? for help
+Loaded GHCi configuration from /Users/coyarzun/Library/Application Support/Sublime Text 3/Packages/SublimeREPL/config/Tidal/ghci-tidal.conf
+tidal> import Sound.Tidal.MIDI.Context
+tidal> devices <- midiDevices
+tidal> m1 <- midiStream devices "Dispositivo MIDI USB Puerto 1" 10 synthController
+Opened: "CoreMIDI": "Dispositivo MIDI USB Puerto 1"
+Successfully initialized Device 'Dispositivo MIDI USB Puerto 1'
+tidal> late [185,11,127] midi now  80  midi onset:  0 onset (relative):  "-0.080" , sched:  0
+and 3 more
+
+tidal> m2 <- midiStream devices "Dispositivo MIDI USB Puerto 1" 10 synthController
+Cached Device Output
+Successfully initialized Device 'Dispositivo MIDI USB Puerto 1'
+tidal> late [185,11,127] midi now  7452  midi onset:  7420 onset (relative):  "-0.032" , sched:  7420
+and 3 more
+
+tidal> m3 <- midiStream devices "Dispositivo MIDI USB Puerto 1" 10 synthController
+Cached Device Output
+Successfully initialized Device 'Dispositivo MIDI USB Puerto 1'
+tidal> late [185,11,127] midi now  13198  midi onset:  13106 onset (relative):  "-0.092" , sched:  13106
+and 3 more
+
+tidal> m4 <- midiStream devices "Dispositivo MIDI USB Puerto 1" 1 synthController
+Cached Device Output
+Successfully initialized Device 'Dispositivo MIDI USB Puerto 1'
+tidal> late [176,11,127] midi now  19078  midi onset:  19049 onset (relative):  "-0.029" , sched:  19049
+and 3 more
+
+tidal> m5 <- midiStream devices "Dispositivo MIDI USB Puerto 2" 2 synthController
+Opened: "CoreMIDI": "Dispositivo MIDI USB Puerto 2"
+Successfully initialized Device 'Dispositivo MIDI USB Puerto 2'
+tidal> late [177,11,127] midi now  24702  midi onset:  24574 onset (relative):  "-0.127" , sched:  24574
+and 3 more
+
+tidal> m1 $ e 3 8 $ every 4 (fast 2) $ midinote "[[36 38 [36 36] 38]/2 ,42*8]" # velocity (scale 0.6 1.0 rand)
+tidal> m1 $ every 4 (fast 2) $ midinote "[[36 38 [36 36] 38]/2 ,42*8]" # velocity (scale 0.6 1.0 rand)
+tidal> m4 $ midinote "[35 38 42]*1"  # velocity (scale 0.5 0.9 rand) # dur (1.0)
+tidal> m4 $ e 3 8 $ midinote "[35 38 42]*1"  # velocity (scale 0.5 0.9 rand) # dur (1.0)
+tidal> m5 $ e 6 8 $ midinote "[59 62 66]*1" 
+tidal> m5 $ e 1 8 $ midinote "[59 62 66]*1"
+tidal> m5 $ e 1 6 $ midinote "[59 62 66]*1"
+tidal> m5 $ e 2 6 $ midinote "[59 62 66]*1"
+tidal> m5 $ e 3 6 $ midinote "[59 62 66]*1"
+tidal> m5 $ e 4 6 $ midinote "[59 62 66]*1"
+tidal> m5 $ e 5 6 $ midinote "[59 62 66]*1"
+tidal> m5 $ e 6 6 $ midinote "[59 62 66]*1"
+tidal> m5 $ e 6 8 $ midinote "[59 62 66]*1"
+tidal> m5 $ e 6 4 $ midinote "[59 62 66]*1"
+tidal> m5 $ e 6 2 $ midinote "[59 62 66]*1"
+tidal> m5 $ e 4 6 $ midinote "[59 62 66]*1"
+tidal> m5 $ e 1 6 $ midinote "[59 62 66]*1"
+tidal> m5 $ e 6 2 $ midinote "[59 62 66]*1"
+tidal> m5 $ e 4 6 $ midinote "[59 62 66]*1"
+tidal> m5 silence
+tidal> m4 silence
+tidal> m1 silence
+tidal> m4 $ e 46 $ midinote "[40 40 52 50 48 47 45 42 42 40]"
+
+<interactive>:35:6: error:
+    • Couldn't match type ‘Pattern a0 -> Pattern a0’
+                     with ‘Pattern ParamMap’
+      Expected type: ParamPattern
+        Actual type: Pattern a0 -> Pattern a0
+    • In the second argument of ‘($)’, namely
+        ‘e 46 $ midinote "[40 40 52 50 48 47 45 42 42 40]"’
+      In the expression:
+        m4 $ e 46 $ midinote "[40 40 52 50 48 47 45 42 42 40]"
+      In an equation for ‘it’:
+          it = m4 $ e 46 $ midinote "[40 40 52 50 48 47 45 42 42 40]"
+
+<interactive>:35:13: error:
+    • Couldn't match type ‘Pattern ParamMap’ with ‘Int’
+      Expected type: Int
+        Actual type: ParamPattern
+    • In the second argument of ‘($)’, namely
+        ‘midinote "[40 40 52 50 48 47 45 42 42 40]"’
+      In the second argument of ‘($)’, namely
+        ‘e 46 $ midinote "[40 40 52 50 48 47 45 42 42 40]"’
+      In the expression:
+        m4 $ e 46 $ midinote "[40 40 52 50 48 47 45 42 42 40]"
+tidal> m4 $ e 4 6 $ midinote "[40 40 52 50 48 47 45 42 42 40]"
+tidal> m4 $ midinote "[40 40 52 50 48 47 45 42 42 40]"
+tidal> m4 $ e 4 6 $ midinote "[40 40 52 50 48 47 45 42 42 40]"
+tidal> m4 $ midinote "[40 40 52 50 48 47 45 42 42 40]"
+tidal> m4 $ midinote "[40 40 52 50 48 47 45 42 42 40]/4"
+tidal> m4 $ midinote "[40 40 52 50 48 47 45 42 42 40]/4"  # dur (scale 0.1 0.9 rand)
+tidal> m4 $ midinote "[40 40 52 50 48 47 45 42 42 40]/4"  # dur (scale 0.1 0.9 rand) # velocity (scale 0.1 0.9 rand) 
+tidal> m4 $ midinote "[40 40 52 50 48 47 45 42 42 40]/3"  # dur (scale 0.1 0.9 rand) # velocity (scale 0.1 0.9 rand)
+tidal> m4 $ midinote "[40 40 52 50 48 47 45 42 42 40]/6"  # dur (scale 0.1 0.9 rand) # velocity (scale 0.1 0.9 rand)
+tidal> m1 $ midinote "36"
+tidal> m1 $ midinote "36*2"
+tidal> m1 $ midinote "36*3"
+tidal> m1 $ midinote "36*12"
+tidal> m1 $ midinote "36/3"
+tidal> m4 $ midinote "[40 40 52 50 48 47 45 42 42 40]/3"  # dur (scale 0.1 0.9 rand) # velocity (scale 0.1 0.9 rand)
+tidal> m1 $ midinote "36"
+tidal> m1 $ midinote "36*3"
+tidal> m1 $ midinote "36*3/2"
+tidal> m1 $ midinote "[36*3]/2"
+tidal> m4 $ midinote "[40 40 52 50 48 47 45 42 42 40]/6"  # dur (scale 0.1 0.9 rand) # velocity (scale 0.1 0.9 rand)
+tidal> m4 $ midinote "[40 52 48 ]/6"  # dur (scale 0.1 0.9 rand) # velocity (scale 0.1 0.9 rand)
+tidal> m4 $ midinote "[40 52 48 ]"  # dur (scale 0.1 0.9 rand) # velocity (scale 0.1 0.9 rand)
+tidal> m4 $ midinote "[40 52 48 ]"  # dur (scale 2.1 0.9 rand) # velocity (scale 0.1 0.9 rand)
+tidal> m4 $ midinote "[40 52 48 ]/2"  # dur (scale 2.1 0.9 rand) # velocity (scale 0.1 0.9 rand)
+tidal> m4 $ midinote "[40 52 48 ]/6"  # dur (scale 0.1 0.9 rand) # velocity (scale 0.1 0.9 rand)
+tidal> m4 $ midinote "[40 52 48 ]/2"  # dur (scale 2.1 0.9 rand) # velocity (scale 0.1 0.9 rand)
+tidal> m4 $ midinote "[40 52 48 ]/2"  # dur (scale 0.1 0.9 rand) # velocity (scale 0.1 0.9 rand)
+tidal> m4 $ midinote "[40 52 48 ]"  # dur (scale 0.1 0.9 rand) # velocity (scale 0.1 0.9 rand)
+tidal> m4 $ midinote "[40 52 48]"  # dur (scale 0.1 0.9 rand) # velocity (scale 0.1 0.9 rand)

@@ -1,0 +1,146 @@
+GHCi, version 8.0.2: http://www.haskell.org/ghc/  :? for help
+Loaded GHCi configuration from /Users/coyarzun/Library/Application Support/Sublime Text 3/Packages/SublimeREPL/config/Tidal/ghci-tidal.conf
+tidal> import Sound.Tidal.MIDI.Context
+tidal> devices <- midiDevices
+tidal> m1 <- midiStream devices "Dispositivo MIDI USB Puerto 1" 10 synthController
+Opened: "CoreMIDI": "Dispositivo MIDI USB Puerto 1"
+Successfully initialized Device 'Dispositivo MIDI USB Puerto 1'
+tidal> late [185,11,127] midi now  88  midi onset:  0 onset (relative):  "-0.087" , sched:  0
+and 3 more
+
+tidal> m1 $ midinote "[36*3]/2"
+tidal> m1 $ midinote "[36*3]/1"
+tidal> m1 $ midinote "[36*3]/2"
+tidal> m2 <- midiStream devices "Dispositivo MIDI USB Puerto 1" 10 synthController
+Cached Device Output
+Successfully initialized Device 'Dispositivo MIDI USB Puerto 1'
+tidal> late [185,11,127] midi now  198957  midi onset:  198953 onset (relative):  "-0.005" , sched:  198953
+and 3 more
+
+tidal> m2 $ midinote "38"
+tidal> m2 silence
+tidal> m3 <- midiStream devices "Dispositivo MIDI USB Puerto 1" 10 synthController
+Cached Device Output
+Successfully initialized Device 'Dispositivo MIDI USB Puerto 1'
+tidal> late [185,11,127] midi now  240835  midi onset:  240809 onset (relative):  "-0.025" , sched:  240809
+and 3 more
+
+tidal> m4 <- midiStream devices "Dispositivo MIDI USB Puerto 1" 1 synthController
+Cached Device Output
+Successfully initialized Device 'Dispositivo MIDI USB Puerto 1'
+tidal> late [176,11,127] midi now  247208  midi onset:  247139 onset (relative):  "-0.070" , sched:  247139
+and 3 more
+
+tidal>m5 <- midiStream devices "Dispositivo MIDI USB Puerto 2" 2 synthController
+Opened: "CoreMIDI": "Dispositivo MIDI USB Puerto 2"
+Successfully initialized Device 'Dispositivo MIDI USB Puerto 2'
+tidal> late [177,11,127] midi now  276708  midi onset:  276684 onset (relative):  "-0.024" , sched:  276684
+and 3 more
+
+tidal> m6 <- midiStream devices "Dispositivo MIDI USB Puerto 1" 2 synthController
+Cached Device Output
+Successfully initialized Device 'Dispositivo MIDI USB Puerto 1'
+tidal> late [177,11,127] midi now  282835  midi onset:  282782 onset (relative):  "-0.054" , sched:  282782
+and 3 more
+
+tidal> m4 $ e 5 6 $ midinote "[40 52 48]"  # velocity (scale 0.1 1.0 rand) # expression (scale 0.1 1.0 rand)
+tidal> m5 $ e 3 6 $ midinote "[40 52 48]"  # velocity (scale 0.1 1.0 rand) # expression (scale 0.1 1.0 rand)
+tidal> m1 $ midinote "[36*3]"
+tidal> m1 $ midinote "[36*3]/2"
+tidal> m2 $ midinote "42*6"
+tidal> m2 $ midinote "42*6" # expression (scale 0.1 1.0 rand)
+tidal> m5 $ midinote "40*6" # expression (scale 0.1 1.0 rand)
+tidal> m5 $ midinote "40*6" # dur (scale 0.1 1.0 rand)
+tidal> m5 $ midinote "40*6" # dur (scale 0.1 1.0 rand) # expression (scale 0.1 1.0 rand)
+tidal> m5 $ midinote "40*6" # dur (scale 0.1 1.0 rand) # expression (scale 0.5 1.0 rand)
+tidal> m5 $ midinote "40*6" # dur (scale 0.1 1.0 rand) # expression (scale 0.8 1.0 rand)
+tidal> m5 $ midinote "28*6" # dur (scale 0.1 1.0 rand) # expression (scale 0.8 1.0 rand)
+tidal> m5 $ midinote "28*12" # dur (scale 0.1 1.0 rand) # expression (scale 0.8 1.0 rand)
+tidal> m5 $ midinote "28" # dur (scale 0.1 1.0 rand) # expression (scale 0.8 1.0 rand)
+tidal> m5 $ e 1 6 $ midinote "28" # dur (scale 0.1 1.0 rand) # expression (scale 0.8 1.0 rand)
+tidal> m5 $ e 1 6 $ midinote "[28 29]" # dur (scale 0.1 1.0 rand) # expression (scale 0.8 1.0 rand)
+tidal> m5 $ e 3 6 $ midinote "[28 29]" # dur (scale 0.1 1.0 rand) # expression (scale 0.8 1.0 rand)
+tidal> m5 $ e 6 6 $ midinote "[28 29]" # dur (scale 0.1 1.0 rand) # expression (scale 0.8 1.0 rand)
+tidal> m5 $ e 6 6 $ midinote "[28 29]*2" # dur (scale 0.1 1.0 rand) # expression (scale 0.8 1.0 rand)
+tidal> m5 $ e 6 6 $ midinote "[28 29]*2" # dur (scale 0.1 1.0 rand) # expression (scale 0.8 1.0 rand)
+tidal> m5 $ e 6 6 $ midinote "[52 29]*2" # dur (scale 0.1 1.0 rand) # expression (scale 0.8 1.0 rand)
+tidal> m5 $ fast 2 $ e 6 6 $ midinote "[52 29]*2" # dur (scale 0.1 1.0 rand) # expression (scale 0.8 1.0 rand)
+tidal> m5 $ e 6 6 $ midinote "[52 29]*2" # dur (scale 0.1 1.0 rand) # expression (scale 0.8 1.0 rand)
+tidal> m3 $ midinote "39"
+tidal> m3 $ midinote "38"
+tidal> m3 $ midinote "39"
+tidal> m3 $ midinote "38,39"
+tidal> m3 $ midinote "[38,39]"
+tidal> m6 $ e 6 6 $ midinote "[52 29]*2" # dur (scale 0.1 1.0 rand) # expression (scale 0.8 1.0 rand)
+tidal> m6 $ e 5 6 $ midinote "[52 29]*2" # dur (scale 0.1 1.0 rand) # expression (scale 0.8 1.0 rand)
+tidal> m6 $ e 5 6 $ midinote "[52 29]*2" # dur (scale 10.1 1.0 rand) # expression (scale 0.8 1.0 rand)
+tidal> m6 $ e 5 6 $ midinote "[52 [29, 59]*2" # dur (scale 10.1 1.0 rand) # expression (scale 0.8 1.0 rand)
+tidal> m6 $ e 5 6 $ midinote "[52 [29, 59]*2" # dur (scale 10.1 1.0 rand) # expression (scale 0.8 1.0 rand)
+tidal> m6 $ e 5 6 $ midinote "[52 [29, 59]]*2" # dur (scale 10.1 1.0 rand) # expression (scale 0.8 1.0 rand)
+tidal> m1 $ midinote "[36*3]/1"
+tidal> m6 $ e 5 6 $ midinote "[52 [29, 59]*2" # dur (scale 10.1 1.0 rand) # expression (scale 0.1 1.0 rand)
+tidal> m6 $ e 5 6 $ midinote "[52 [29, 59]]*2" # dur (scale 10.1 1.0 rand) # expression (scale 0.1 1.0 rand)
+tidal> m3 $ midinote "[38,39]*2"
+tidal> m1 silence
+tidal> m2 silence
+tidal> m3 silence
+tidal> m4 silence
+tidal> m5 silence
+tidal> m6 silence
+tidal> m4 $ e 5 6 $ midinote "[40 52 48]" 
+tidal> m4 silence
+tidal> m4 $ e 6 6 $ midinote "[40 52 48]"
+tidal> m4 $ e 5 6 $ midinote "[40 52 48]"
+tidal> m4 $ e 3 6 $ midinote "[40 52 48]"
+tidal> m4 $ e 3 6 $ midinote "[40 52 48]"  # velocity (scale 0.1 1.0 rand) 
+tidal> m4 $ e 3 6 $ midinote "[40 52 48]"  # velocity (scale 0.1 4.0 rand)
+tidal> m4 $ e 3 6 $ midinote "[40 52 48]"  # velocity (scale 0.1 1.0 rand)
+tidal> m4 $ e 3 6 $ midinote "[40 52 48]"  # velocity (scale 0.1 1.0 rand) # expression (scale 0.1 1.0 rand)
+tidal> m1 $ midinote "[36*3]/2"
+tidal> m2 $ midinote "42*6"
+tidal> m5 $ midinote "40*6" # dur (scale 0.1 1.0 rand)
+tidal> m5 $ midinote "28" # dur (scale 0.1 1.0 rand) # expression (scale 0.8 1.0 rand)
+tidal> m5 $ e 1 6 $ midinote "[28 29]" # dur (scale 0.1 1.0 rand) # expression (scale 0.8 1.0 rand)
+tidal> m5 $ e 6 6 $ midinote "[28 29]" # dur (scale 0.1 1.0 rand) # expression (scale 0.8 1.0 rand)
+tidal> m5 $ e 6 6 $ midinote "[28 29]*2" # dur (scale 0.1 1.0 rand) # expression (scale 0.8 1.0 rand)
+tidal> m5 $ e 1 6 $ midinote "[28 29]" # dur (scale 0.1 1.0 rand) # expression (scale 0.8 1.0 rand)
+tidal> m5 $ e 6 6 $ midinote "[28 29]*2" # dur (scale 0.1 1.0 rand) # expression (scale 0.8 1.0 rand)
+tidal> m5 $ e 6 6 $ midinote "[52 29]*2" # dur (scale 0.1 1.0 rand) # expression (scale 0.8 1.0 rand)
+tidal> m3 $ midinote "39"
+tidal> m3 $ midinote "39/2"
+tidal> m3 $ midinote "[38,39]/2"
+tidal> m6 $ e 6 6 $ midinote "[52 29]*2" # dur (scale 0.1 1.0 rand) # expression (scale 0.8 1.0 rand)
+tidal> m6 $ e 5 6 $ midinote "[52 29]*2" # dur (scale 10.1 1.0 rand) # expression (scale 0.8 1.0 rand)
+tidal> m6 $ e 5 6 $ midinote "[52 [29, 59]*2" # dur (scale 10.1 1.0 rand) # expression (scale 0.8 1.0 rand)
+tidal> m6 $ e 5 6 $ midinote "[52 [29, 59]]*2" # dur (scale 10.1 1.0 rand) # expression (scale 0.8 1.0 rand)
+tidal> m3 $ midinote "[38,39]/1"
+tidal> m3 $ midinote "[38,39]/2"
+tidal> m3 $ midinote "[38,39]/1"
+tidal> m3 $ midinote "[38,39]/1"
+tidal> m3 $ midinote "[38,39]/2"
+tidal> m6 silence
+tidal> m3 silence
+tidal> m2 silence
+tidal> m5 silence # m4 silence
+
+<interactive>:98:1: error:
+    • Couldn't match type ‘IO ()’ with ‘Pattern ParamMap’
+      Expected type: ParamPattern
+        Actual type: IO ()
+    • In the first argument of ‘(#)’, namely ‘m5 silence’
+      In the expression: m5 silence # m4 silence
+      In an equation for ‘it’: it = m5 silence # m4 silence
+
+<interactive>:98:14: error:
+    • Couldn't match type ‘IO ()’ with ‘Pattern ParamMap’
+      Expected type: ParamPattern
+        Actual type: IO ()
+    • In the second argument of ‘(#)’, namely ‘m4 silence’
+      In the expression: m5 silence # m4 silence
+      In an equation for ‘it’: it = m5 silence # m4 silence
+tidal> 
+tidal> m5 silence
+tidal> m3 silence
+tidal> m1 silence
+tidal> m4 silence
+tidal> 

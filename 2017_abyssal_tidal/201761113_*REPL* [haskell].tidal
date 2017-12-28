@@ -1,0 +1,173 @@
+GHCi, version 8.0.2: http://www.haskell.org/ghc/  :? for help
+Loaded GHCi configuration from /Users/coyarzun/Library/Application Support/Sublime Text 3/Packages/SublimeREPL/config/Tidal/ghci-tidal.conf
+tidal> import Sound.Tidal.MIDI.Context
+tidal> devices <- midiDevices
+tidal> m1 <- midiStream devices "Dispositivo MIDI USB Puerto 1" 10 synthController
+Opened: "CoreMIDI": "Dispositivo MIDI USB Puerto 1"
+Successfully initialized Device 'Dispositivo MIDI USB Puerto 1'
+tidal> late [185,11,127] midi now  12  midi onset:  0 onset (relative):  "-0.011" , sched:  0
+and 3 more
+
+tidal> m2 <- midiStream devices "Dispositivo MIDI USB Puerto 1" 10 synthController
+Cached Device Output
+Successfully initialized Device 'Dispositivo MIDI USB Puerto 1'
+tidal> late [185,11,127] midi now  5014  midi onset:  4944 onset (relative):  "-0.069" , sched:  4944
+and 3 more
+
+tidal> m3 <- midiStream devices "Dispositivo MIDI USB Puerto 1" 10 synthController
+Cached Device Output
+Successfully initialized Device 'Dispositivo MIDI USB Puerto 1'
+tidal> late [185,11,127] midi now  10139  midi onset:  10089 onset (relative):  "-0.050" , sched:  10089
+and 3 more
+
+tidal> m4 <- midiStream devices "Dispositivo MIDI USB Puerto 1" 3 synthController
+Cached Device Output
+Successfully initialized Device 'Dispositivo MIDI USB Puerto 1'
+tidal> late [178,11,127] midi now  16014  midi onset:  15985 onset (relative):  "-0.029" , sched:  15985
+and 3 more
+
+tidal> m5 <- midiStream devices "Dispositivo MIDI USB Puerto 2" 2 synthController
+Opened: "CoreMIDI": "Dispositivo MIDI USB Puerto 2"
+Successfully initialized Device 'Dispositivo MIDI USB Puerto 2'
+tidal> late [177,11,127] midi now  21637  midi onset:  21569 onset (relative):  "-0.068" , sched:  21569
+and 3 more
+
+tidal> m6 <- midiStream devices "Dispositivo MIDI USB Puerto 1" 2 synthController
+Cached Device Output
+Successfully initialized Device 'Dispositivo MIDI USB Puerto 1'
+tidal> late [177,11,127] midi now  27514  midi onset:  27462 onset (relative):  "-0.051" , sched:  27462
+and 3 more
+
+tidal> m7 <- midiStream devices "Dispositivo MIDI USB Puerto 1" 1 synthController
+Cached Device Output
+Successfully initialized Device 'Dispositivo MIDI USB Puerto 1'
+tidal> late [176,11,127] midi now  34514  midi onset:  34400 onset (relative):  "-0.113" , sched:  34400
+and 3 more
+
+tidal> m1 $ midinote "36*2"
+tidal> m7 $ midinote "38"
+tidal> m7 $ midinote "72"
+tidal> m7 $ e 5 8 $ midinote "72"
+tidal> m7 $ e 1 8 $ midinote "72"
+tidal> m7 $ e 2 8 $ midinote "72"
+tidal> m7 $ e 3 8 $ midinote "72"
+tidal> m1 $ midinote "36"
+tidal> m1 $ e 5 8 $ midinote "36"
+tidal> m1 $ e 3 8 $ midinote "36"
+tidal> m7 $ midinote "38*8"
+tidal> m7 $ midinote "38*8" # expression (scale 0.1 2.0 rand)
+tidal> m7 silence
+tidal> m7 $ midinote "38*8" # expression (scale 0.1 2.0 rand)
+tidal> m7 silence
+tidal> m7 $ midinote "38*8" # dur (scale 0.1 2.0 rand)
+tidal> m7 $ midinote "38*8" # dur (scale 0.1 1.0 rand)
+tidal> m7 $ midinote "38*8 40 41" # dur (scale 0.1 1.0 rand)
+tidal> m7 $ midinote "38*8 41" # dur (scale 0.1 1.0 rand)
+tidal> m7 $ midinote "38*8" # dur (scale 0.1 1.0 rand)
+tidal> m7 $ midinote "38*8" # dur (scale 0.1 1.0 rand) # velocity (scale 0.1 1.0 rand2)
+
+<interactive>:37:75: error:
+    • Variable not in scope: rand2 :: Pattern Double
+    • Perhaps you meant one of these:
+        ‘rand’ (imported from Sound.Tidal.Context),
+        ‘rand4’ (imported from Sound.Tidal.Context)
+tidal> m7 $ midinote "38*8" # dur (scale 0.1 1.0 rand) # velocity (scale 0.1 1.0 rand)
+tidal> m4 $ midinote "62, 71"
+tidal> m4 $ midinote "62, 71" # dur (10)
+tidal> m4 $ e 7 8 $ midinote "62, 71" # dur (10)
+tidal> m4 $ e 7 8 $ midinote "[62, 71] 72" # dur (10)
+tidal> m4 $ e 7 8 $ midinote "[62, 71] 67" # dur (10)
+tidal> m4 $ e 7 8 $ midinote "[62, 71]" # dur (10)
+tidal> m4 $ e 7 8 $ midinote "62, 71" # dur (10)
+tidal> m4 $ e 7 8 $ midinote "62, 71" # dur (10) # velocity (scale 0.1 1.0 rand)
+tidal> m4 $ e 7 8 $ midinote "62, 71" # dur (scale 0.1 1.0 rand) # velocity (scale 0.1 1.0 rand)
+tidal> m5 $ midinote "66"
+tidal> m5 $ midinote "62"
+tidal> m5 $ midinote "50"
+tidal> m5 $ midinote "50*8"
+tidal> m5 $ e 3 8 $ midinote "50*8"
+tidal> m5 $ e 3 8 $ midinote "62*8"
+tidal> m5 $ e 3 8 $ midinote "62*8" # dur (scale 0.1 1.0 rand) # velocity (scale 0.1 1.0 rand)
+tidal> m5 $ e 3 8 $ midinote "62*8" # dur (scale 0.1 0.2 rand) # velocity (scale 0.1 1.0 rand)
+tidal> m5 $ e 3 8 $ midinote "62*8, 65" # dur (scale 0.1 0.2 rand) # velocity (scale 0.1 1.0 rand)
+tidal> m5 $ e 3 8 $ midinote "62 65" # dur (scale 0.1 0.2 rand) # velocity (scale 0.1 1.0 rand)
+tidal> m5 $ e 3 8 $ midinote "62 65*2" # dur (scale 0.1 0.2 rand) # velocity (scale 0.1 1.0 rand)
+tidal> m5 $ e 3 8 $ midinote "62*8 65*2" # dur (scale 0.1 0.2 rand) # velocity (scale 0.1 1.0 rand)
+tidal> m5 $ e 3 8 $ midinote "62 65" # dur (scale 0.1 0.2 rand) # velocity (scale 0.1 1.0 rand)
+tidal> m5 $ e 2 8 $ midinote "62 65" # dur (scale 0.1 0.2 rand) # velocity (scale 0.1 1.0 rand)
+tidal> m5 $ e 5 8 $ midinote "62 65" # dur (scale 0.1 0.2 rand) # velocity (scale 0.1 1.0 rand)
+tidal> m5 $ e 5 8 $ midinote "62 65 71" # dur (scale 0.1 0.2 rand) # velocity (scale 0.1 1.0 rand)
+tidal> m5 $ e 5 8 $ midinote "62 65 74" # dur (scale 0.1 0.2 rand) # velocity (scale 0.1 1.0 rand)
+tidal> m5 $ e 5 8 $ midinote "62 71 74" # dur (scale 0.1 0.2 rand) # velocity (scale 0.1 1.0 rand)
+tidal> m5 $ e 5 8 $ midinote "62 83 74" # dur (scale 0.1 0.2 rand) # velocity (scale 0.1 1.0 rand)
+tidal> m5 $ e 5 8 $ midinote "62 74 71" # dur (scale 0.1 0.2 rand) # velocity (scale 0.1 1.0 rand)
+tidal> m5 $ e 5 8 $ midinote "62 74 71" # dur (scale 0.1 1.2 rand) # velocity (scale 0.1 1.0 rand)
+tidal> m5 $ e 5 8 $ midinote "62 74 71" # dur (scale 0.1 1.2 rand) # velocity (scale 0.1 0.5 rand)
+tidal> m5 $ e 5 8 $ midinote "62 74" # dur (scale 0.1 1.2 rand) # velocity (scale 0.1 0.5 rand)
+tidal> m5 $ midinote "38*8" # dur (scale 0.1 1.0 rand) # velocity (scale 0.1 1.0 rand2)
+
+<interactive>:71:75: error:
+    • Variable not in scope: rand2 :: Pattern Double
+    • Perhaps you meant one of these:
+        ‘rand’ (imported from Sound.Tidal.Context),
+        ‘rand4’ (imported from Sound.Tidal.Context)
+tidal> m7 $ midinote "38*8" # dur (scale 0.1 1.0 rand) # velocity (scale 0.1 1.0 rand2)
+
+<interactive>:72:75: error:
+    • Variable not in scope: rand2 :: Pattern Double
+    • Perhaps you meant one of these:
+        ‘rand’ (imported from Sound.Tidal.Context),
+        ‘rand4’ (imported from Sound.Tidal.Context)
+tidal> m7 $ midinote "38*8" # dur (scale 0.1 1.0 rand) # velocity (scale 0.1 1.0 rand)
+tidal> m5 $ midinote "38*8" # dur (scale 0.1 1.0 rand) # velocity (scale 0.1 1.0 rand)
+tidal> m5 $ midinote "38*8 40*2" # dur (scale 0.1 1.0 rand) # velocity (scale 0.1 1.0 rand)
+tidal> m5 $ midinote "38*6 40*2" # dur (scale 0.1 1.0 rand) # velocity (scale 0.1 1.0 rand)
+tidal> m5 $ midinote "38*8" # dur (scale 0.1 1.0 rand) # velocity (scale 0.1 1.0 rand)
+tidal> m5 $ midinote "[38]*8" # dur (scale 0.1 1.0 rand) # velocity (scale 0.1 1.0 rand)
+
+tidal> m5 $ midinote "[~38]*4" # dur (scale 0.1 1.0 rand) # velocity (scale 0.1 1.0 rand)
+tidal> m5 $ midinote "[~39]*4" # dur (scale 0.1 1.0 rand) # velocity (scale 0.1 1.0 rand)
+tidal> m5 $ midinote "[~38]*4" # dur (scale 0.1 1.0 rand) # velocity (scale 0.1 1.0 rand)
+tidal> m2 $ midinote "42*8"
+tidal> m2 $ e 7 8 $ midinote "42"
+tidal> m2 $ e 5 8 $ midinote "42"
+tidal> m2 $ e 15 8 $ midinote "42"
+tidal> m2 $ e 14 8 $ midinote "42"
+tidal> m2 $ e 16 8 $ midinote "42"
+tidal> m2 $ midinote "42*8" # dur (scale 0.1 1.0 rand)
+tidal> m3 $ midinote "38"
+tidal> m3 $ midinote "~ 38"
+tidal> m3 $ e 5 8 $ midinote "~ 38"
+tidal> m3 $ e 8 8 $ midinote "~ 38"
+tidal> m3 $ e 1 8 $ midinote "~ 38"
+tidal> m3 $ e 2 8 $ midinote "~ 38"
+tidal> m3 $ e 1 8 $ midinote "~ 38"
+tidal> m3 $ e 1 8 $ midinote "~ 38"
+tidal> m3 $ e 16 8 $ midinote "~ 38"
+tidal> m3 $ e 1 8 $ midinote "~ 38"
+tidal> m3 $ e 8 8 $ midinote "~ 38"
+tidal> m3 $ e 2 8 $ midinote "~ 38"
+tidal> m6 $ midinote "50"
+tidal> m6 $ midinote "50*8"
+tidal> m6 $ midinote "50*8, 57*8"
+tidal> m6 $ midinote "[50*8, 57*8]"
+tidal> m6 $ midinote "[50*8, 57*8, 71]"
+tidal> m6 $ midinote "[50*8, 57*8, 71]"# velocity (scale 0.1 1.0 rand)
+tidal> m6 $ midinote "[50*8, 57*8, 71]" # velocity (scale 0.5 2.0 rand)
+tidal> m6 $ midinote "[50*8, 57*8, 71]"# velocity (scale 0.1 1.0 rand)
+tidal> m6 $ midinote "[50*8, 57*8, 71]" # velocity (scale 0.1 10.0 rand)
+tidal> m6 $ midinote "[50*8, 57*8, 71]" # velocity (scale 0.1 1.0 rand)
+tidal> m6 $ midinote "[50*8, 57*8, 71]" # dur (scale 0.1 1.0 rand)
+tidal> m6 $ midinote "[50*8, 57*8]" # dur (scale 0.1 1.0 rand)
+tidal> m6 $ midinote "[50*8, 57*8]" # dur (scale 0.1 1.0 rand) # velocity (scale 0.1 1.0 rand)
+tidal> m6 $ midinote "[50*8, 57*8]" # dur (scale 0.1 1.0 rand) # velocity (scale 0.1 10.0 rand)
+tidal> m6 $ midinote "[50*8, 57*8]" # dur (scale 0.1 1.0 rand) # velocity (scale 0.1 1.0 rand)
+tidal> m6 silence
+tidal> m5 silence
+tidal> m4 silence
+tidal> m3 silence
+tidal> m2 silence
+tidal> m1 silence
+tidal> m5 silence
+tidal> m7 silence
+tidal> 

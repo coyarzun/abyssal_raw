@@ -1,0 +1,147 @@
+GHCi, version 8.0.2: http://www.haskell.org/ghc/  :? for help
+Loaded GHCi configuration from /Users/coyarzun/Library/Application Support/Sublime Text 3/Packages/SublimeREPL/config/Tidal/ghci-tidal.conf
+tidal> import Sound.Tidal.MIDI.Context
+tidal> devices <- midiDevices
+tidal> m1 <- midiStream devices "Dispositivo MIDI USB Puerto 1" 10 synthController
+Opened: "CoreMIDI": "Dispositivo MIDI USB Puerto 1"
+Successfully initialized Device 'Dispositivo MIDI USB Puerto 1'
+tidal> late [185,11,127] midi now  62  midi onset:  0 onset (relative):  "-0.062" , sched:  0
+and 3 more
+
+tidal> m2 <- midiStream devices "Dispositivo MIDI USB Puerto 1" 10 synthController
+Cached Device Output
+Successfully initialized Device 'Dispositivo MIDI USB Puerto 1'
+tidal> late [185,11,127] midi now  5184  midi onset:  5069 onset (relative):  "-0.114" , sched:  5069
+and 3 more
+
+tidal> m3 <- midiStream devices "Dispositivo MIDI USB Puerto 1" 10 synthController
+Cached Device Output
+Successfully initialized Device 'Dispositivo MIDI USB Puerto 1'
+tidal> late [185,11,127] midi now  13310  midi onset:  13278 onset (relative):  "-0.032" , sched:  13278
+and 3 more
+
+tidal> m4 <- midiStream devices "Dispositivo MIDI USB Puerto 1" 1 synthController
+Cached Device Output
+Successfully initialized Device 'Dispositivo MIDI USB Puerto 1'
+tidal> late [176,11,127] midi now  18434  midi onset:  18397 onset (relative):  "-0.037" , sched:  18397
+and 3 more
+
+tidal> m5 <- midiStream devices "Dispositivo MIDI USB Puerto 2" 2 synthController
+Opened: "CoreMIDI": "Dispositivo MIDI USB Puerto 2"
+Successfully initialized Device 'Dispositivo MIDI USB Puerto 2'
+tidal> late [177,11,127] midi now  24561  midi onset:  24499 onset (relative):  "-0.060" , sched:  24499
+and 3 more
+
+tidal> m6 <- midiStream devices "Dispositivo MIDI USB Puerto 1" 2 synthController
+Cached Device Output
+Successfully initialized Device 'Dispositivo MIDI USB Puerto 1'
+tidal> late [177,11,127] midi now  30561  midi onset:  30535 onset (relative):  "-0.026" , sched:  30535
+and 3 more
+
+tidal> m1 $ midinote "[36*3]/2"
+tidal> m4 $ slow 2 $ midinote "[35*8 36*8]/2" # dur (scale 1.0 2.0 rand)
+tidal> m2 $ midinote "42*2"
+tidal> m1 $ midinote "36"
+tidal> m2 $ midinote "[~ 42]*2"  # velocity (scale 0.2 1.0 rand)
+tidal> m3 $ midinote "[50 ~]/2"  # velocity (scale 0.2 1.0 rand)
+tidal> m3 $ midinote "[50 48]/2"  # velocity (scale 0.2 1.0 rand)
+tidal> m3 $ midinote "[50 48]/1"  # velocity (scale 0.2 1.0 rand)
+tidal> m3 $ midinote "[50 ]/1"  # velocity (scale 0.2 1.0 rand)
+tidal> m3 $ midinote "[~ 50 ]/1"  # velocity (scale 0.2 1.0 rand)
+tidal> m3 $ midinote "[~ 50*2 ]/1"  # velocity (scale 0.2 1.0 rand)
+tidal> m3 $ midinote "[~ 50*2 ]/2"  # velocity (scale 0.2 1.0 rand)
+tidal> m3 $ midinote "[~ 50*2 ]/1"  # velocity (scale 0.2 1.0 rand)
+tidal> m6 $ slow  8 $ e 5 8 $ midinote "[71, 35]" # velocity (scale 0.2 1.0 rand) # dur (scale 20.0 1.0 rand)
+tidal> m6 $ slow  8 $ e 5 8 $ midinote "[71, 35]" # velocity (scale 0.2 1.0 rand) # dur (scale 20.0 1.0 rand)
+tidal> m6 $ slow  2 $ e 5 8 $ midinote "[71, 35]" # velocity (scale 0.2 1.0 rand) # dur (scale 20.0 1.0 rand)
+tidal> m6 $ slow  8 $ e 5 8 $ midinote "[71, 35]" # velocity (scale 0.2 1.0 rand) # dur (scale 20.0 1.0 rand)
+tidal> m5 $ e 5 8 $ midinote "59*2"
+tidal> m5 $ e 5 8 $ midinote "59*1"
+tidal> m5 $ e 5 8 $ midinote "59*2"
+tidal> m5 $ e 5 8 $ midinote "59*1"
+tidal> m5 $ midinote "59"
+tidal> m6 $ slow  2 $ e 5 8 $ midinote "[71, 35]" # velocity (scale 0.2 1.0 rand) # dur (scale 20.0 1.0 rand)
+tidal> m5 $ e 5 8 $ midinote "59"
+tidal> m2 $ e 8 8 $ midinote "[[40*2] 42]*2"  # velocity (scale 0.2 1.0 rand)
+tidal> m2 $ e 5 8 $ midinote "[[40*2] 42]*2"  # velocity (scale 0.2 1.0 rand)
+tidal> m2 $ midinote "[40 42]*2"  # velocity (scale 0.2 1.0 rand)
+tidal> m2 $ midinote "[40 42]*2"  # velocity (scale 0.8 1.0 rand)
+tidal> m3 $ midinote "[~ 50*1 ]/1"  # velocity (scale 0.2 1.0 rand)
+tidal> m6 $ slow  8 $ e 5 8 $ midinote "[71, 35]" # velocity (scale 0.2 1.0 rand) # dur (scale 20.0 1.0 rand)
+tidal> m1 $ midinote "36*2"
+tidal> m1 $ midinote "[36*2]/2"
+tidal> m1 $ midinote "[36*2 ~]/2"
+tidal> m1 $ midinote "36"
+tidal> m1 $ midinote "36*2"
+tidal> m1 $ midinote "36"
+tidal> m6 $ slow  1 $ e 5 8 $ midinote "[71, 35]" # velocity (scale 0.2 1.0 rand) # dur (scale 20.0 1.0 rand)
+tidal> m6 $ slow  1 $ e 5 8 $ midinote "[71, 35, 79]" # velocity (scale 0.2 1.0 rand) # dur (scale 20.0 1.0 rand)
+tidal> m6 $ slow  1 $ e 5 8 $ midinote "[71, 35, 79]" # velocity (scale 0.2 1.0 rand) # dur (scale 20.0 5.0 rand)
+tidal> m6 $ slow  1 $ e 5 8 $ midinote "[71, 35, 79]" # velocity (scale 0.2 1.0 rand) # dur (scale 40.0 1.0 rand)
+tidal> m6 $ slow  1 $ e 5 8 $ midinote "[71, 35, 79]" # velocity (scale 0.2 1.0 rand) # dur (scale 20.0 1.0 rand)
+tidal> m3 silence
+tidal> m2 silence
+tidal> m2 $ e 8 8 $ midinote "[[40*2] 42]*2"  # velocity (scale 0.2 1.0 rand)
+tidal> m2 $ e 8 8 $ midinote "[[44*2] 42]*2"  # velocity (scale 0.2 1.0 rand)
+tidal> m3 $ midinote "~ 38"
+tidal> m6 $ slow  1 $ e 5 8 $ midinote "[71, 35, 79],[95]" # velocity (scale 0.2 1.0 rand) # dur (scale 20.0 1.0 rand)
+tidal> m6 $ slow  1 $ e 5 8 $ midinote "[71, 35, 79]" # velocity (scale 0.2 1.0 rand) # dur (scale 20.0 1.0 rand)
+tidal> m6 $ slow  2 $ e 5 8 $ midinote "[71, 35, 79]" # velocity (scale 0.2 1.0 rand) # dur (scale 20.0 1.0 rand)
+tidal> m6 $ slow  1 $ e 5 8 $ midinote "[71, 35, 79]" # velocity (scale 0.2 1.0 rand) # dur (scale 20.0 1.0 rand)
+tidal> m6 $ fast  2 $ e 5 8 $ midinote "[71, 35, 79]" # velocity (scale 0.2 1.0 rand) # dur (scale 20.0 1.0 rand)
+tidal> m6 $ fast  1 $ e 5 8 $ midinote "[71, 35, 79]" # velocity (scale 0.2 1.0 rand) # dur (scale 20.0 1.0 rand)
+tidal> m5 silence
+tidal> m1 silence
+tidal> m2 silence
+tidal> m3 silence
+tidal> m4 silence
+tidal> m5 silence
+tidal> m6 silence
+tidal> m6 $ fast  1 $ e 5 8 $ midinote "[71, 35, 79]" # velocity (scale 0.2 1.0 rand) # dur (scale 20.0 1.0 rand)
+tidal> m3 $ midinote "~ 38"
+tidal> m2 $ e 8 8 $ midinote "[[44*2] 42]*2"  # velocity (scale 0.2 1.0 rand)
+tidal> m1 $ midinote "36"
+tidal> m5 $ e 5 8 $ midinote "59"
+tidal> m4 $ slow 2 $ midinote "[35*8 36*8]/2" # dur (scale 1.0 2.0 rand)
+tidal> m6 $ slow  1 $ e 5 8 $ midinote "[71, 35, 79],[95]" # velocity (scale 0.2 1.0 rand) # dur (scale 20.0 1.0 rand)
+tidal> m6 $ slow  2 $ e 5 8 $ midinote "[71, 35]" # velocity (scale 0.2 1.0 rand) # dur (scale 20.0 1.0 rand)
+tidal> m6 $ slow  1 $ e 5 8 $ midinote "[71, 35, 79],[95]" # velocity (scale 0.2 1.0 rand) # dur (scale 20.0 1.0 rand)
+tidal> m6 $ slow  1 $ e 5 8 $ midinote "[71, 35, 79]" # velocity (scale 0.2 1.0 rand) # dur (scale 20.0 1.0 rand)
+tidal> m6 $ slow  2 $ e 5 8 $ midinote "[71, 35]" # velocity (scale 0.2 1.0 rand) # dur (scale 20.0 1.0 rand)
+tidal> m3 silence
+tidal> m5 silence
+tidal> m6 silence
+tidal> m4 silence
+tidal> m2 silence
+tidal> m1 silence
+tidal> m6 $ slow  2 $ e 5 8 $ midinote "[71, 35]" # velocity (scale 0.2 1.0 rand) # dur (scale 20.0 1.0 rand)
+tidal> m1 silence
+tidal> m6 silence
+tidal> {-begining recording-}
+tidal> m6 $ slow  2 $ e 5 8 $ midinote "[71, 35]" # velocity (scale 0.2 1.0 rand) # dur (scale 20.0 1.0 rand)
+tidal> m3 $ midinote "~ 38"
+tidal> m1 $ midinote "36"
+tidal> m2 $ e 8 8 $ midinote "[[44*2] 42]*2"  # velocity (scale 0.2 1.0 rand)
+tidal> m2 $ e 8 8 $ midinote "[[44*2] 42]*2"  # velocity (scale 0.2 1.0 rand)
+tidal> m5 $ e 5 8 $ midinote "59*1"
+tidal> m4 $ slow 2 $ midinote "[35*8 36*8]/2" # dur (scale 1.0 2.0 rand)
+tidal> m6 $ slow  1 $ e 5 8 $ midinote "[71, 35, 79]" # velocity (scale 0.2 1.0 rand) # dur (scale 20.0 1.0 rand)
+tidal> m6 $ slow  2 $ e 5 8 $ midinote "[71, 35]" # velocity (scale 0.2 1.0 rand) # dur (scale 20.0 1.0 rand)
+tidal> m6 $ slow  1 $ e 5 8 $ midinote "[71, 35, 79]" # velocity (scale 0.2 1.0 rand) # dur (scale 20.0 1.0 rand)
+tidal> m6 $ slow  1 $ e 5 8 $ midinote "[71, 35, 79][95]" # velocity (scale 0.2 1.0 rand) # dur (scale 20.0 1.0 rand)
+tidal> m6 $ slow  1 $ e 5 8 $ midinote "[71, 35, 79]" # velocity (scale 0.2 1.0 rand) # dur (scale 20.0 1.0 rand)
+tidal> m6 $ slow  1 $ e 5 8 $ midinote "[71, 35, 79][95, 90]" # velocity (scale 0.2 1.0 rand) # dur (scale 20.0 1.0 rand)
+tidal> m6 $ slow  1 $ e 5 8 $ midinote "[71, 35, 79]" # velocity (scale 0.2 1.0 rand) # dur (scale 20.0 1.0 rand)
+tidal> m6 $ slow  2 $ e 5 8 $ midinote "[71, 35, 79]" # velocity (scale 0.2 1.0 rand) # dur (scale 20.0 1.0 rand)
+tidal> m6 $ slow  1 $ e 5 8 $ midinote "[71, 35, 79][95, 90]" # velocity (scale 0.2 1.0 rand) # dur (scale 20.0 1.0 rand)
+tidal> m6 $ slow  2 $ e 5 8 $ midinote "[71, 35, 79]" # velocity (scale 0.2 1.0 rand) # dur (scale 20.0 1.0 rand)
+tidal> m6 $ slow  1 $ e 5 8 $ midinote "[71, 35, 79]" # velocity (scale 0.2 1.0 rand) # dur (scale 20.0 1.0 rand)
+tidal> m3 silence
+tidal> m1 silence
+tidal> m5 silence
+tidal> m6 silence
+tidal> m2 silence
+tidal> m1 silence
+tidal> m4 silence
+tidal> m1 $ midinote "35(5,8,2)"
+tidal> 

@@ -1,0 +1,148 @@
+GHCi, version 8.0.2: http://www.haskell.org/ghc/  :? for help
+Loaded GHCi configuration from /Users/coyarzun/Library/Application Support/Sublime Text 3/Packages/SublimeREPL/config/Tidal/ghci-tidal.conf
+tidal> import Sound.Tidal.MIDI.Context
+tidal> devices <- midiDevices
+tidal> m1 $ midinote "36*2"
+
+<interactive>:3:1: error:
+    • Variable not in scope: m1 :: ParamPattern -> t
+    • Perhaps you meant one of these: ‘t1’ (line 4), ‘d1’ (line 4)
+tidal> 
+tidal> m1 <- midiStream devices "Dispositivo MIDI USB Puerto 1" 10 synthController
+Opened: "CoreMIDI": "Dispositivo MIDI USB Puerto 1"
+Successfully initialized Device 'Dispositivo MIDI USB Puerto 1'
+tidal> late [185,11,127] midi now  111  midi onset:  0 onset (relative):  "-0.111" , sched:  0
+and 3 more
+
+tidal> m2 <- midiStream devices "Dispositivo MIDI USB Puerto 1" 10 synthController
+Cached Device Output
+Successfully initialized Device 'Dispositivo MIDI USB Puerto 1'
+tidal> late [185,11,127] midi now  4863  midi onset:  4847 onset (relative):  "-0.016" , sched:  4847
+and 3 more
+
+tidal> m3 <- midiStream devices "Dispositivo MIDI USB Puerto 1" 10 synthController
+Cached Device Output
+Successfully initialized Device 'Dispositivo MIDI USB Puerto 1'
+tidal> late [185,11,127] midi now  9237  midi onset:  9144 onset (relative):  "-0.092" , sched:  9144
+and 3 more
+
+tidal> m4 <- midiStream devices "Dispositivo MIDI USB Puerto 1" 1 synthController
+Cached Device Output
+Successfully initialized Device 'Dispositivo MIDI USB Puerto 1'
+tidal> late [176,11,127] midi now  13740  midi onset:  13713 onset (relative):  "-0.028" , sched:  13713
+and 3 more
+
+tidal> m5 <- midiStream devices "Dispositivo MIDI USB Puerto 2" 2 synthController
+Opened: "CoreMIDI": "Dispositivo MIDI USB Puerto 2"
+Successfully initialized Device 'Dispositivo MIDI USB Puerto 2'
+tidal> late [177,11,127] midi now  18366  midi onset:  18265 onset (relative):  "-0.101" , sched:  18265
+and 3 more
+
+tidal> m6 <- midiStream devices "Dispositivo MIDI USB Puerto 1" 2 synthController
+Cached Device Output
+Successfully initialized Device 'Dispositivo MIDI USB Puerto 1'
+tidal> late [177,11,127] midi now  24364  midi onset:  24243 onset (relative):  "-0.122" , sched:  24243
+and 3 more
+
+tidal> m1 $ midinote "36*2"
+tidal> m2 $ midinote "[42]*8"
+tidal> m2 $ midinote "[42]*8"  # dur (scale 0.1 0.4 sine1)
+tidal> m2 $ midinote "[42]*8"  # velocity (scale 0.1 0.4 sine1)
+tidal> m2 $ midinote "[42]*8"  # velocity (scale 0.1 1.0 rand)
+tidal> m6 $ e 8 8 $ midinote "[[62,69]*16 [57,64]*16 [58,65]*16 [58,65]*16]/8"  # dur (scale 20.0 1.0 rand) # expression (scale 0.8 1.0 rand)
+tidal> m4 $ e 5 8 $ midinote "[[38]*16 ]"
+tidal> m6 $ e 10 8 $ midinote "[[62,69]*16]"  # dur (scale 20.0 1.0 rand) # expression (scale 0.8 1.0 rand)
+tidal> m5 $ e 5 8 $ midinote "[62, 45]"  # dur (scale 2.0 1.0 rand) # expression (scale 0.1 1.0 rand)
+tidal> m6 $ e 8 8 $ (every 4 (fast 8)) $ midinote "[[38, 45] ]"  # dur (scale 20.0 1.0 rand) # expression (scale 0.8 1.0 rand)
+tidal> m5 $ e 5 8 $ midinote "[62, 45]"  # dur (scale 2.0 1.0 rand) # expression (scale 0.1 1.0 rand)
+tidal> m3 $ midinote "~38"
+tidal> m6 $ e 8 8 $ midinote "[[38, 45] 72]"  # dur (scale 20.0 1.0 rand) # expression (scale 0.8 1.0 rand)
+tidal> m5 $ e 8 8 $ (every 4 (fast 8)) $ midinote "[[38, 45] 62*8]"  # dur (scale 20.0 1.0 rand) # expression (scale 0.8 1.0 rand)
+tidal> m6 $ e 8 8 $ (every 4 (fast 8)) $ midinote "[[38, 45] ]"  # dur (scale 20.0 1.0 rand) # expression (scale 0.8 1.0 rand)
+tidal> m5 $ e 5 8 $ midinote "[[62,69]*16 [57,64]*16 [58,65]*16 [58,65]*16]/8"
+tidal> m5 $ e 5 8 $ midinote "[[74 81]*16]/4"
+tidal> m1 silence
+tidal> m2 silence
+tidal> m3 silence
+tidal> m4 silence
+tidal> m5 silence
+tidal> m5 silence
+tidal> m6 silence
+tidal> m1 $ midinote "[36*3]/2"
+tidal> m4 $ e 5 6 $ midinote "[40 52 48]"  # velocity (scale 0.1 1.0 rand) # expression (scale 0.1 1.0 rand)
+tidal> m2 $ midinote "42*6"
+tidal> m5 $ e 3 6 $ every 2 (fast 2) $ midinote "[52 64 48]"  # velocity (scale 0.1 1.0 rand) # expression (scale 0.5 1.0 rand)
+tidal> m6 $ e 5 6 $ fast 2 $ midinote "[40 52 48]"  # velocity (scale 0.1 1.0 rand) # expression (scale 0.1 1.0 rand)
+tidal> m6 silence
+tidal> m6 $ e 5 6 $ slow 4 $ midinote "[40 52 48]"  # velocity (scale 0.1 1.0 rand) # expression (scale 0.1 1.0 rand)
+tidal> m6 $ e 5 6 $ slow 8 $ midinote "[40 52 48]"  # velocity (scale 0.1 1.0 rand) # expression (scale 0.1 1.0 rand)
+tidal> m6 $ e 5 6 $ slow 8 $ midinote "[40 52 48]/8"  # velocity (scale 0.1 1.0 rand) # expression (scale 0.1 1.0 rand)
+tidal> m6 $ e 8 6 $ slow 8 $ midinote "[64 52 48]/8"  # velocity (scale 0.1 1.0 rand) # expression (scale 0.1 1.0 rand)
+tidal> 
+tidal> m6 $ e 6 6 $ slow 8 $ midinote "[64 52 48]/8"  # velocity (scale 0.1 1.0 rand) # expression (scale 0.1 1.0 rand)
+tidal> m6 $ e 6 6 $ slow 8 $ midinote "[64 52]"  # velocity (scale 0.1 1.0 rand) # expression (scale 0.1 1.0 rand)
+tidal> m6 % slow 8 $ e 6 6 $ slow 8 $ midinote "[64 52]"  # velocity (scale 0.1 1.0 rand) # expression (scale 0.1 1.0 rand)
+
+<interactive>:54:1: error:
+    • Couldn't match expected type ‘Pattern ParamMap -> t’
+                  with actual type ‘Ratio (ParamPattern -> IO ())’
+    • The first argument of ($) takes one argument,
+      but its type ‘Ratio (ParamPattern -> IO ())’ has none
+      In the expression:
+        m6 % slow 8
+        $ e 6 6
+          $ slow 8
+            $ midinote "[64 52]" # velocity (scale 0.1 1.0 rand)
+              # expression (scale 0.1 1.0 rand)
+      In an equation for ‘it’:
+          it
+            = m6 % slow 8
+              $ e 6 6
+                $ slow 8
+                  $ midinote "[64 52]" # velocity (scale 0.1 1.0 rand)
+                    # expression (scale 0.1 1.0 rand)
+    • Relevant bindings include it :: t (bound at <interactive>:54:1)
+
+<interactive>:54:6: error:
+    • Couldn't match type ‘Pattern ParamMap’ with ‘IO ()’
+      Expected type: ParamPattern -> IO ()
+        Actual type: Pattern ParamMap -> Pattern ParamMap
+    • In the second argument of ‘(%)’, namely ‘slow 8’
+      In the expression: m6 % slow 8
+      In the expression:
+        m6 % slow 8
+        $ e 6 6
+          $ slow 8
+            $ midinote "[64 52]" # velocity (scale 0.1 1.0 rand)
+              # expression (scale 0.1 1.0 rand)
+tidal> m6 $ slow 8 $ e 6 6 $ slow 8 $ midinote "[64 52]"  # velocity (scale 0.1 1.0 rand) # expression (scale 0.1 1.0 rand)
+tidal> m6 $ slow 8 $ e 3 6 $ slow 8 $ midinote "[64 52]"  # velocity (scale 0.1 1.0 rand) # expression (scale 0.1 1.0 rand)
+tidal> m6 $ slow 4 $ e 3 6 $ slow 8 $ midinote "[64 52]"  # velocity (scale 0.1 1.0 rand) # expression (scale 0.1 1.0 rand)
+tidal> m6 $ slow 4 $ e 3 6 $ slow 8 $ midinote "[64 52 76]"  # velocity (scale 0.1 1.0 rand) # expression (scale 0.1 1.0 rand)
+tidal> m6 $ slow 4 $ e 3 6 $ slow 8 $ midinote "[64 52 76]"  # velocity (scale 20.1 1.0 rand) # expression (scale 0.1 1.0 rand)
+tidal> m6 $ slow 4 $ e 3 6 $ slow 8 $ midinote "[64 52 76]"  # velocity (scale 20.1 1.0 rand) # expression (scale 0.1 1.0 rand)
+tidal> m6 $ slow 4 $ e 3 6 $ slow 8 $ midinote "[64 52 76]"  # velocity (scale 0.1 1.0 rand) # expression (scale 0.1 1.0 rand)
+tidal> m6 $ slow 4 $ e 3 6 $ slow 2 $ midinote "[64 52 76]"  # velocity (scale 0.1 1.0 rand) # expression (scale 0.1 1.0 rand)
+tidal> m6 $ e 3 6 $ slow 2 $ midinote "[64 52 76]"  # velocity (scale 0.1 1.0 rand) # expression (scale 0.1 1.0 rand)
+tidal> m6 $ e 3 6 $ slow 4 $ midinote "[64 52 76]"  # velocity (scale 0.1 1.0 rand) # expression (scale 0.1 1.0 rand)
+tidal> m6 $ slow 4 $ e 3 6 $ midinote "[64 52 76]"  # velocity (scale 0.1 1.0 rand) # expression (scale 0.1 1.0 rand)
+tidal> m6 $ slow 2 $ e 3 6 $ midinote "[64 52 76]"  # velocity (scale 0.1 1.0 rand) # expression (scale 0.1 1.0 rand)
+tidal> m6 $ slow 1 $ e 3 6 $ midinote "[64 52 76]"  # velocity (scale 0.1 1.0 rand) # expression (scale 0.1 1.0 rand)
+tidal> m6 $ slow 4 $ e 3 6 $ midinote "[64 52 76]"  # velocity (scale 0.1 1.0 rand) # expression (scale 0.1 1.0 rand)
+tidal> m6 $ e 3 6 $ midinote "[[38, 45] 62]"  # dur (scale 20.0 1.0 rand) # expression (scale 0.8 1.0 rand)
+tidal> m6 $ e 3 8 $ every 2 (fast 2) $midinote "[52 64*2 48]"  # velocity (scale 0.1 1.0 rand) # expression (scale 0.5 1.0 rand)
+tidal> m6 silence
+tidal> m6 $ e 5 6 $ midinote "[40 52 48]"  # velocity (scale 0.1 1.0 rand) # expression (scale 0.1 1.0 rand)
+tidal> m6 $ e 3 8 $ every 2 (fast 2) $midinote "[52 64*2 48]"  # velocity (scale 0.1 1.0 rand) # expression (scale 0.5 1.0 rand)
+tidal> m6 $ e 3 6 $ midinote "[[38, 45] 62]"  # dur (scale 20.0 1.0 rand) # expression (scale 0.8 1.0 rand)
+tidal> m6 silence
+tidal> m6 $ e 3 6 $ every 2 (fast 2) $ midinote "[52 64 48]"  # velocity (scale 0.1 1.0 rand) # expression (scale 0.5 1.0 rand)
+tidal> m6 $ slow 4 $ e 3 6 $ every 2 (fast 2) $ midinote "[52 64 48]"  # velocity (scale 0.1 1.0 rand) # expression (scale 0.5 1.0 rand)
+tidal> m6 $ midinote "[52]*8"  # velocity (scale 0.1 1.0 rand) # expression (scale 0.5 1.0 rand)
+tidal> m6 $ midinote "[52]*6"  # velocity (scale 0.1 1.0 rand) # expression (scale 0.5 1.0 rand)
+tidal> m6 $ midinote "[52]*6"  # velocity (scale 0.1 0.5 rand) # expression (scale 0.5 1.0 rand)
+tidal> m6 $ midinote "[52]*6"  # velocity (scale 0.1 0.5 rand) # expression (scale 0.5 1.0 rand) # dur (scale 0.1 10.5 rand) 
+tidal> m6 $ midinote "[52, 71]*6"  # velocity (scale 0.1 0.5 rand) # expression (scale 0.5 1.0 rand) # dur (scale 0.1 10.5 rand)
+tidal> m6 $ slow 2 $ midinote "[52, 71]*6"  # velocity (scale 0.1 0.5 rand) # expression (scale 0.5 1.0 rand) # dur (scale 0.1 10.5 rand)
+tidal> m6 silence
+tidal> 
